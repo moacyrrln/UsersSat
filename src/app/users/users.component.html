@@ -1,0 +1,33 @@
+<!-- /mnt/e/dev/sat/v4-17/src/app/users/users.component.html -->
+<div *ngIf="!clearedScreen; else helloWorldContent">
+    <div class="table-container">
+      <h2>Lista de Usuários</h2>
+      <button (click)="clearScreen()">Limpar Tela</button>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.id }}</td>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>
+              <button class="delete-button" (click)="deleteUser(user)">Excluir</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <ng-template #helloWorldContent>
+    <p>Hello World</p>
+    <button (click)="resetScreen()">Voltar para Lista de Usuários</button>
+  </ng-template>
+  
