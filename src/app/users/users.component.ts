@@ -1,6 +1,7 @@
+// E:\dev\SAT\users_front_end\src\app\users\users.component.ts
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
-import { Router } from '@angular/router';
+import { CommonService } from '../shared/common.service';
 
 @Component({
   selector: 'app-users',
@@ -9,12 +10,20 @@ import { Router } from '@angular/router';
 })
 export class UsersComponent implements OnInit {
   users: any[] = [];
-  clearedScreen: boolean = false;
+  addingUser: boolean = false;
+  updatingUser: boolean = false;
+  selectedUser: any;
 
-  constructor(private dataService: DataService, private router: Router) { }
-
+  constructor(private dataService: DataService, public commonService:  CommonService) { }
+  
   ngOnInit(): void {
-    this.fetchUsers();
+    this.loadUsers();
+  }
+
+  loadUsers() {
+    this.dataService.sendGetRequest().subscribe((data: any) => {
+      this.users = data;
+    });
   }
 
   fetchUsers() {
@@ -37,12 +46,35 @@ export class UsersComponent implements OnInit {
     );
   }
 
-  clearScreen() {
-    this.clearedScreen = true;
+  addUser() {
+    this.addingUser = true;
   }
 
-  resetScreen() {
-    this.clearedScreen = false;
-    this.fetchUsers();
+  userAdded() {
+    this.addingUser = false;
+    this.loadUsers();
   }
+
+  updateUser(user: any) {
+    this.selectedUser = {...user};
+    this.updatingUser = true;
+  }
+
+  userUpdated() {
+    this.updatingUser = false;
+    this.loadUsers();
+  }
+
+  confirmAndDeleteUser(id: number) {
+    const confirmation = confirm('Tem certeza que deseja excluir este usuário?');
+    if (confirmation) {
+      this.dataService.deleteUser(id).subscribe(() => {
+        this.loadUsers(); // Recarrega a lista após a exclusão
+      });
+    }
+  }
+
 }
+
+
+

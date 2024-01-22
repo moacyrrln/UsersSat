@@ -7,11 +7,16 @@ import { UsersComponent } from "./users/users.component";
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
+import { UserAddComponent } from './user-add/user-add.component';
+import { UserUpdateComponent } from './user-update/user-update.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    UsersComponent
+    UsersComponent,
+    UserAddComponent,
+    UserUpdateComponent
   ],
   imports: [
     BrowserModule,
@@ -24,3 +29,7 @@ import { RouterModule } from '@angular/router';
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+
+
+

@@ -1,27 +1,32 @@
-# V417
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.9.
+# Projeto Frontend Angular - Sistema de Administração de Usuários
 
-## Development server
+Este projeto é um frontend Angular CRUD para um sistema de administração de usuários. Ele permite visualizar, adicionar, atualizar e excluir usuários.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Pré-requisitos
 
-## Code scaffolding
+Antes de iniciar, certifique-se de ter o Node.js e o Angular CLI instalados em sua máquina. Para instalar o Angular CLI, execute:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+npm install
+npx @angular/cli@13 serve
+```
 
-## Build
+## Executando o Projeto
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Para executar o projeto localmente, execute o seguinte comando:
 
-## Running unit tests
+```bash
+ng serve
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Após a inicialização, o projeto estará disponível em `http://localhost:4200`.
 
-## Running end-to-end tests
+## Estrutura do Projeto
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+O projeto inclui os seguintes componentes principais:
 
-## Further help
+- `UsersComponent`: Gerencia a exibição e interação com a lista de usuários.
+- `UserAddComponent`: Permite adicionar novos usuários.
+- `UserUpdateComponent`: Permite atualizar os dados dos usuários existentes.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.

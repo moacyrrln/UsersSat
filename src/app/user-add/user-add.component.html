@@ -1,0 +1,51 @@
+<!-- E:\dev\SAT\users_front_end\src\app\user-add\user-add.component.html -->
+<div class="user-add-container">
+  <h2>Adicionar Novo Usuário</h2>
+  <form (ngSubmit)="saveUser()">
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>CPF</th>
+          <th>Telefone</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <input type="text" [(ngModel)]="user.name" [ngClass]="{'valid-field': isValidField('name'), 'invalid-field': !isValidField('name')}" name="name" placeholder="Nome" required>
+          </td>
+          <td>
+            <input type="email" [(ngModel)]="user.email" (ngModelChange)="isValidField('email')"
+            [ngClass]="{'valid-field': isValidField('email'), 'invalid-field': !isValidField('email')}"
+            name="email" placeholder="Email" required>
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="user.cpf" 
+            (blur)="user.cpf = commonService.formatCpf(user.cpf)"
+            [ngClass]="{'valid-field': isValidField('cpf'), 'invalid-field': !isValidField('cpf')}" 
+            name="cpf" placeholder="CPF" required>
+          </td>
+          <td>
+            <input type="text" [(ngModel)]="user.phone" 
+            (blur)="user.phone = commonService.formatPhone(user.phone)"
+            [ngClass]="{'valid-field': isValidField('phone'), 'invalid-field': !isValidField('phone')}" 
+            name="phone" placeholder="Telefone" required>
+          </td>
+          <td>
+            <button type="submit" class="add-button">Salvar</button>
+            <button type="button" class="delete-button" (click)="cancelAction()">Cancelar</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </form>
+</div>
+
+
+  
+
+
+

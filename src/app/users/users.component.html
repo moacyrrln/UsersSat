@@ -1,33 +1,48 @@
 <!-- /mnt/e/dev/sat/v4-17/src/app/users/users.component.html -->
-<div *ngIf="!clearedScreen; else helloWorldContent">
-    <div class="table-container">
-      <h2>Lista de Usuários</h2>
-      <button (click)="clearScreen()">Limpar Tela</button>
-      <table>
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>Ações</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of users">
-            <td>{{ user.id }}</td>
-            <td>{{ user.name }}</td>
-            <td>{{ user.email }}</td>
-            <td>
-              <button class="delete-button" (click)="deleteUser(user)">Excluir</button>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+
+<div *ngIf="!addingUser && !updatingUser; else editUserContent">
+  <div class="table-container">
+    <h2>Lista de Usuários</h2>
+    
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>CPF</th>
+          <th>Telefone</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of users">
+          <td>{{ user.id }}</td>
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ commonService.formatCpf(user.cpf) }}</td>
+          <td>{{ commonService.formatPhone(user.phone) }}</td>
+          <td>
+            <button class="update-button" (click)="updateUser(user)">Alterar</button>
+            <button class="delete-button" (click)="confirmAndDeleteUser(user.id)">Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <button class="add-button" (click)="addUser()">Adicionar</button>
   </div>
-  
-  <ng-template #helloWorldContent>
-    <p>Hello World</p>
-    <button (click)="resetScreen()">Voltar para Lista de Usuários</button>
-  </ng-template>
-  
+</div>
+
+<ng-template #editUserContent>
+  <div *ngIf="addingUser">
+    <app-user-add (cancel)="addingUser = false" (userAdded)="userAdded()"></app-user-add>
+  </div>
+  <div *ngIf="updatingUser">
+    <app-user-update [user]="selectedUser" (cancel)="updatingUser = false" (userUpdated)="userUpdated()"></app-user-update>
+  </div>
+</ng-template>
+
+
+
+
+

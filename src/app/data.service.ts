@@ -18,4 +18,16 @@ export class DataService {
   public deleteUser(id: number) {
     return this.httpClient.delete(`${this.REST_API_SERVER}/${id}`);
   }
+
+  public addUser(user: any) {
+    return this.httpClient.post(this.REST_API_SERVER, user);
+  }
+
+  public updateUser(user: any) {
+    return this.httpClient.put(`${this.REST_API_SERVER}/${user.id}`, user);
+  }
 }
+
+
+
+

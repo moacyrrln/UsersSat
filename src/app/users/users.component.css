@@ -1,12 +1,19 @@
-/* users.component.css */
+/* E:\dev\SAT\users_front_end\src\app\users\users.component.css */
 .table-container {
     width: 100%;
     margin-top: 20px;
+    padding-left: 20px;
 }
+
+/* Estilos para os cabeçalhos da tabela */
+.table-container table thead th {
+    text-align: center;
+  }
+  
 
 table {
     border-collapse: collapse;
-    width: 100%;
+    
     border: 1px solid #ddd;
 }
 
@@ -31,7 +38,7 @@ tr:hover {
     border: none; /* Remove a borda padrão */
     padding: 8px 16px; /* Adicione algum preenchimento para melhor aparência */
     cursor: pointer; /* Altera o cursor ao passar o mouse para indicar que é clicável */
-    border-radius: 4px; /* Adicione uma borda arredondada */
+    border-radius: 10px; /* Adicione uma borda arredondada */
 }
 
 .delete-button:hover, .add-button:hover {
@@ -46,3 +53,32 @@ tr:hover {
 .add-button:hover {
     background-color: darkgreen; /* Altera a cor de fundo ao passar o mouse para Adicionar Cliente */
 }
+
+.update-button {
+    background-color: blue; /* Define a cor de fundo vermelha para Excluir */
+    color: white; /* Define a cor do texto como branco */
+    border: none; /* Remove a borda padrão */
+    padding: 8px 16px; /* Adicione algum preenchimento para melhor aparência */
+    cursor: pointer; /* Altera o cursor ao passar o mouse para indicar que é clicável */
+    border-radius: 10px; /* Adicione uma borda arredondada */
+}
+
+.update-button:hover {
+    background-color: darkblue; /* Altera a cor de fundo ao passar o mouse para Excluir */
+}
+
+.add-button {
+    background-color: green; /* Define a cor de fundo vermelha para Excluir */
+    color: white; /* Define a cor do texto como branco */
+    border: none; /* Remove a borda padrão */
+    padding: 8px 16px; /* Adicione algum preenchimento para melhor aparência */
+    cursor: pointer; /* Altera o cursor ao passar o mouse para indicar que é clicável */
+    border-radius: 10px; /* Adicione uma borda arredondada */
+}
+
+.add-button:hover {
+    background-color: darkgreen; /* Altera a cor de fundo ao passar o mouse para Excluir */
+}
+
+
+
